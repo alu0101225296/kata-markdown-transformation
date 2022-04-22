@@ -3,26 +3,37 @@ import {MarkdownTransformation} from '../src/markdownTransformation';
 describe('Markdown Transformation should', () => {
   const markdownTransformation = new MarkdownTransformation();
 
-  it('receive a text without links as input', () => {
+  it('not modify nothing when there are not links', () => {
     const exampleWithoutLinks = 'This is an example without links';
 
     expect(markdownTransformation.link2Footnote(exampleWithoutLinks))
       .toBe(exampleWithoutLinks);
   });
 
-  it('receive a text with links as input', () => {
+  it('transform a text with a single link to a footnote', () => {
     const exampleWithLink1 = '[this book](https://codigosostenible.com)';
-    const result1 = 'this book [^anchor1]\n[^anchor1]: https://codigosostenible.com';
+    const result1 = 'this book [^anchor1]\n\n[^anchor1]: https://codigosostenible.com';
 
     const exampleWithLink2 = `[this book](https://codigosostenible.com) and some other text
     and some other text line.`;
     const result2 = `this book [^anchor1] and some other text
-    and some other text line.\n[^anchor1]: https://codigosostenible.com`;
+    and some other text line.\n\n[^anchor1]: https://codigosostenible.com`;
 
     expect(markdownTransformation.link2Footnote(exampleWithLink1))
       .toBe(result1);
     expect(markdownTransformation.link2Footnote(exampleWithLink2))
       .toBe(result2);
+  });
+
+
+  it('transform a text with links to a footnotes', () => {
+    const exampleWithLink = 'This is an example with [this book](https://codigosostenible1.com) and [this other book](https://codigosostenible2.com)';
+    const result = 'This is an example with this book [^anchor1] and this other book [^anchor2]\n\n' +
+      '[^anchor1]: https://codigosostenible1.com\n' +
+      '[^anchor2]: https://codigosostenible2.com';
+
+    expect(markdownTransformation.link2Footnote(exampleWithLink))
+      .toBe(result);
   });
   // it('receive md file as input', () => {
   //   const markdownTransformation = new MarkdownTransformation();
