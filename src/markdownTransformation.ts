@@ -5,10 +5,16 @@ class MarkdownTransformation {
     const urlRegex = /\(.+?\)/;
     const links = text.match(link2FooterRegex);
     if (links) {
-      text = text.replace(links[0], '[^anchor1]');
-      const urlContent = String(links[0].match(urlRegex));
-      text = text + '\n[^anchor1]: ' + urlContent.slice(1, -1);
+      text = this.convertLink2Footnote(links, text, urlRegex);
     }
+
+    return text;
+  }
+
+  private convertLink2Footnote(links: RegExpMatchArray, text: string, urlRegex: RegExp) {
+    text = text.replace(links[0], '[^anchor1]');
+    const urlContent = String(links[0].match(urlRegex));
+    text = text + '\n[^anchor1]: ' + urlContent.slice(1, -1);
     return text;
   }
 }
