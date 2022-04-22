@@ -11,11 +11,18 @@ describe('Markdown Transformation should', () => {
   });
 
   it('receive a text with links as input', () => {
-    const exampleWithLink = '[this book](https://codigosostenible.com)';
-    const result = '[^anchor1]\n[^anchor1]: https://codigosostenible.com';
+    const exampleWithLink1 = '[this book](https://codigosostenible.com)';
+    const result1 = 'this book [^anchor1]\n[^anchor1]: https://codigosostenible.com';
 
-    expect(markdownTransformation.link2Footnote(exampleWithLink))
-      .toBe(result);
+    const exampleWithLink2 = `[this book](https://codigosostenible.com) and some other text
+    and some other text line.`;
+    const result2 = `this book [^anchor1] and some other text
+    and some other text line.\n[^anchor1]: https://codigosostenible.com`;
+
+    expect(markdownTransformation.link2Footnote(exampleWithLink1))
+      .toBe(result1);
+    expect(markdownTransformation.link2Footnote(exampleWithLink2))
+      .toBe(result2);
   });
   // it('receive md file as input', () => {
   //   const markdownTransformation = new MarkdownTransformation();
