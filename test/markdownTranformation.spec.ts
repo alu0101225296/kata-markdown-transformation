@@ -11,20 +11,14 @@ describe('Markdown Transformation should', () => {
   });
 
   it('transform a text with a single link to a footnote', () => {
-    const exampleWithLink1 = '[this book](https://codigosostenible.com)';
-    const result1 = 'this book [^anchor1]\n\n[^anchor1]: https://codigosostenible.com';
-
-    const exampleWithLink2 = `[this book](https://codigosostenible.com) and some other text
+    const exampleWithLink = `[this book](https://codigosostenible.com) and some other text
     and some other text line.`;
-    const result2 = `this book [^anchor1] and some other text
+    const result = `this book [^anchor1] and some other text
     and some other text line.\n\n[^anchor1]: https://codigosostenible.com`;
 
-    expect(markdownTransformation.link2Footnote(exampleWithLink1))
-      .toBe(result1);
-    expect(markdownTransformation.link2Footnote(exampleWithLink2))
-      .toBe(result2);
+    expect(markdownTransformation.link2Footnote(exampleWithLink))
+      .toBe(result);
   });
-
 
   it('transform a text with links to a footnotes', () => {
     const exampleWithLink = 'This is an example with [this book](https://codigosostenible1.com) and [this other book](https://codigosostenible2.com)';
@@ -35,6 +29,7 @@ describe('Markdown Transformation should', () => {
     expect(markdownTransformation.link2Footnote(exampleWithLink))
       .toBe(result);
   });
+
   // it('receive md file as input', () => {
   //   const markdownTransformation = new MarkdownTransformation();
   //   // argv.slice(2)
