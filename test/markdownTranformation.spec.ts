@@ -1,5 +1,6 @@
 import {MarkdownTransformation} from '../src/markdownTransformation';
 import fs from 'fs';
+
 describe('Markdown Transformation should', () => {
   const markdownTransformation = new MarkdownTransformation();
 
@@ -31,9 +32,9 @@ describe('Markdown Transformation should', () => {
   });
 
   it('transform markdown file', () => {
-    const inputRoute = './examples/input.md';
-    const outputRoute = './examples/output.md';
-    const resultRoute = './outputs/result.md';
+    const inputRoute = 'test/examples/input.md';
+    const outputRoute = 'test/examples/output.md';
+    const resultRoute = 'test/outputs/result.md';
 
     markdownTransformation.link2FootnoteFromFile(inputRoute);
     const outputContent = fs.readFileSync(outputRoute, {encoding: 'utf8'});

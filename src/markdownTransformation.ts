@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+import fs from 'fs';
 class MarkdownTransformation {
   private readonly link2FooterRegex = /\[.*?\]\(.+?\)/gu;
 
@@ -39,14 +39,19 @@ class MarkdownTransformation {
   }
 
   // node markdownTransformation.js test/examples/input/example1.md
-  public link2FootnoteFromFile(_filePath: string): void {
-    return;
+  public link2FootnoteFromFile(filePath: string): void {
+    const fileContent = this.readFromFile(filePath);
+    const fileContentFormatted = this.link2Footnote(fileContent);
+    this.writeToFile(fileContentFormatted);
   }
-  // private readFromFile(filePath: string) : string {
-  //   return '';
-  // }
-  // private writeToFile(fileName: string) : void {
-  // }
+
+  private writeToFile(fileContentFormatted: string) {
+    fs.writeFileSync('test/outputs/result.md', fileContentFormatted);
+  }
+
+  private readFromFile(filePath: string) {
+    return fs.readFileSync(filePath, {encoding: 'utf8'});
+  }
 }
 
 export {MarkdownTransformation};
