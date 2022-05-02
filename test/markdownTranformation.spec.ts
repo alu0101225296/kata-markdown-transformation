@@ -30,9 +30,8 @@ describe('Markdown Transformation should', () => {
       .toBe(result);
   });
 
-  // it('receive md file as input', () => {
-  //   const markdownTransformation = new MarkdownTransformation();
-  //   // argv.slice(2)
-  //   expect(markdownTransformation. ).toBe();
-  // });
+  it('receive md file as input', () => {
+
+    // expect(markdownTransformation. ).toBe();
+  });
 });

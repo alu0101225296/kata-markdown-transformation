@@ -11,7 +11,7 @@ Package | Version | Logo
    Jest | 27.5.1 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
    Ts-jest | 27.1.4 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
    ESLint | 8.13.0 | ![ESLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
-  
+
 ## Notes 📋
 Use `npm install` to install all dependencies.
 
@@ -21,7 +21,7 @@ Added [.vscode](/.vscode) folder for the following reasons:
 
 If you don't want to use Visual Studio Code, delete the [.vscode](/.vscode) folder. By doing so, you will not have the 2 functionalities explained above.
 
-The [package-lock.json](/package-lock.json) file has been maintained to avoid possible updates that could break some functionality. 
+The [package-lock.json](/package-lock.json) file has been maintained to avoid possible updates that could break some functionality.
 
 <a name="spanish"></a>
 # Plantilla de Typescript 🖥️
@@ -36,7 +36,7 @@ Paquete | Versión | Logo
    Jest | 27.5.1 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
    Ts-jest | 27.1.4 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
    ESLint | 8.13.0 | ![ESLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
-  
+
 ## Notas 📋
 Use `npm install` para instalar todas las dependencias.
 
