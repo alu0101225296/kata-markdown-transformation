@@ -39,14 +39,14 @@ class MarkdownTransformation {
   }
 
   // node markdownTransformation.js test/examples/input/example1.md
-  public link2FootnoteFromFile(filePath: string): void {
+  public link2FootnoteFromFile(filePath: string, outputPath: string): void {
     const fileContent = this.readFromFile(filePath);
     const fileContentFormatted = this.link2Footnote(fileContent);
-    this.writeToFile(fileContentFormatted);
+    this.writeToFile(fileContentFormatted, outputPath);
   }
 
-  private writeToFile(fileContentFormatted: string) {
-    fs.writeFileSync('test/outputs/result.md', fileContentFormatted);
+  private writeToFile(fileContentFormatted: string, outputPath: string) {
+    fs.writeFileSync(outputPath, fileContentFormatted);
   }
 
   private readFromFile(filePath: string) {

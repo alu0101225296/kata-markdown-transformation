@@ -36,7 +36,7 @@ describe('Markdown Transformation should', () => {
     const outputRoute = 'test/examples/output.md';
     const resultRoute = 'test/outputs/result.md';
 
-    markdownTransformation.link2FootnoteFromFile(inputRoute);
+    markdownTransformation.link2FootnoteFromFile(inputRoute, resultRoute);
     const outputContent = fs.readFileSync(outputRoute, {encoding: 'utf8'});
     const resultContent = fs.readFileSync(resultRoute, {encoding: 'utf8'});
 
