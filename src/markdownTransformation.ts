@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 class MarkdownTransformation {
-  private readonly link2FooterRegex = /\[.*?\]\(.+?\)/g;
+  private readonly link2FooterRegex = /\[.*?\]\(.+?\)/gu;
 
   public link2Footnote(text: string): string {
     const links = text.match(this.link2FooterRegex);
@@ -11,7 +11,7 @@ class MarkdownTransformation {
   }
 
   private readonly urlRegex = /\(.+?\)/;
-  private readonly bracketRegex = /\[.+?\]/;
+  private readonly bracketRegex = /\[.+?\]/u;
 
   private convertLink2Footnote(links: RegExpMatchArray, text: string) {
     text += '\n';
@@ -37,15 +37,16 @@ class MarkdownTransformation {
   private extractURLInsideParenthesis(link: string) {
     return String(link.match(this.urlRegex)).slice(1, -1);
   }
+
   // node markdownTransformation.js test/examples/input/example1.md
-/*   public link2FootnoteFromFile(filePath: string): void {
+  public link2FootnoteFromFile(_filePath: string): void {
     return;
   }
-  private readFromFile(filePath: string) : string {
-    return '';
-  }
-  private writeToFile(fileName: string) : void {
-  } */
+  // private readFromFile(filePath: string) : string {
+  //   return '';
+  // }
+  // private writeToFile(fileName: string) : void {
+  // }
 }
 
 export {MarkdownTransformation};
