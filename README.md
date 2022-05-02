@@ -1,49 +1,49 @@
-<a name="english"></a>
-# Typescript boilerplate 🖥️
+# Markdown transformation kata
 
-* [Leer en español](#spanish)
+The goal is to implement a command line tool that takes a markdown file and returns another markdown file, applying certain transformations to the text.
 
-### Versions 🛠️
+### How to use:
 
-Package | Version | Logo
- :-: | :-: | :-:
-   Typescript | 4.6.3 | ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-   Jest | 27.5.1 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-   Ts-jest | 27.1.4 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-   ESLint | 8.13.0 | ![ESLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+```typescript
+// First we need to install the dependencies
+$ npm install
+// Then we have to build our project
+$ npm run build
+// Finally we can run our application
+$ node bin/markdown-transform link2footnote source.md destination.md
+```
 
-## Notes 📋
-Use `npm install` to install all dependencies.
+The first transformation is to turn links into footnotes. The syntax of a link is this:
 
-Added [.vscode](/.vscode) folder for the following reasons:
-* Enable linting on save with ESLint. If you don't want this option, delete the [.vscode/settings.json](/.vscode/settings.json) file
-* Debugger configuration. If you don't want this option, delete the [.vscode/launch.json](/.vscode/launch.json) file
+```
+[visible text link](url)
+```
 
-If you don't want to use Visual Studio Code, delete the [.vscode](/.vscode) folder. By doing so, you will not have the 2 functionalities explained above.
+The syntax of a footnote is the following:
 
-The [package-lock.json](/package-lock.json) file has been maintained to avoid possible updates that could break some functionality.
+```
+visible text link [^anchor1]
 
-<a name="spanish"></a>
-# Plantilla de Typescript 🖥️
+[^anchor1]: url or text
+```
 
-* [Read in English](#english)
+The goal is to make conversions like the following:
 
-### Versiones 🛠️
+Source:
 
-Paquete | Versión | Logo
- :-: | :-: | :-:
-   Typescript | 4.6.3 | ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-   Jest | 27.5.1 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-   Ts-jest | 27.1.4 | ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-   ESLint | 8.13.0 | ![ESLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+```
+[this book](https://codigosostenible.com) and some other text
+and some other text line.
+```
 
-## Notas 📋
-Use `npm install` para instalar todas las dependencias.
+Transformation:
 
-Se agregó la carpeta [.vscode](/.vscode) por las siguientes razones:
-* Habilitar el linting al guardar con ESLint. Si no desea esta opción, elimine el fichero [.vscode/settings.json](/.vscode/settings.json)
-* Configuración del debugger. Si no desea esta opción, elimine el archivo [.vscode/launch.json](/.vscode/launch.json)
+```
+this book [^anchor1] and some other text
+and some other text line.
 
-Si no desea usar Visual Studio Code, elimine la carpeta [.vscode](/.vscode). Al hacerlo, no dispondrá de las 2 funcionalidades explicadas justo encima.
+[^anchor1]: https://codigosostenible.com
+```
 
-Se ha mantenido el fichero [package-lock.json](/package-lock.json) para evitar posibles actualizaciones que puedan romper alguna funcionalidad.
+There are multiple edge cases to consider: multiple links per line, several links sharing the same url...
+
